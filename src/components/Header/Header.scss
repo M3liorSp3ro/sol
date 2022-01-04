@@ -1,0 +1,58 @@
+.page-content__header {
+    padding: 0 5vw;
+    // background: rgba(35, 11, 5, 0.671);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4vw;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #1c274f;
+
+    & .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.7vw;
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+        height: 3vw;
+    }
+
+    &-right {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+
+        span {
+            color: #fff;
+            margin-right: 15px;
+            font-weight: 700;
+        }
+    }
+
+
+}
+
+.userAndWallet {
+    display: flex;
+    align-items: center;
+
+    & .page-content__header-right {
+        margin-left: 15px;
+    }
+
+    svg {
+        cursor: pointer;
+
+        &:hover {
+            path {
+                fill: white
+            }
+        }
+    }
+}

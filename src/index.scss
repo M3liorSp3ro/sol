@@ -1,0 +1,45 @@
+body {
+  background-color: #131A35;
+  font-family: Montserrat;
+}
+
+.page-content {
+  padding-top: 4vw;
+  padding-bottom: 25vw;
+  min-height: 100vh;
+}
+
+.gitBook {
+  font-weight: 800;
+  font-size: 1vw;
+  color: #fff;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  margin-right: 3vw;
+  border: 1px solid #5ac4be;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
+
+
+  cursor: pointer;
+
+  svg {
+    margin-right: 15px;
+
+
+  }
+
+  &:hover {
+    color: #5ac4be;
+
+    svg {
+      path {
+        fill: #fff
+      }
+    }
+  }
+}
