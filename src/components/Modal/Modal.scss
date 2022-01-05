@@ -46,6 +46,10 @@
         transition: .3s;
         cursor: pointer;
 
+        &:last-child {
+            margin-bottom: 0;
+        }
+
         &_left {
             max-width: 30px;
             overflow: hidden;

@@ -8,38 +8,8 @@ import './Header.scss'
 
 import phantomLogo from '../../asset/phantom-logo.svg'
 import solflare from '../../asset/solflare-logo.svg'
-// import { useConnection } from '@solana/wallet-adapter-react'
-
-
-// import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
-// import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-// import { Connection, SystemProgram, Transaction, clusterApiUrl } from '@solana/web3.js';
-// import { Connection } from '@metaplex/js';
-
-// import {PhantomWalletAdapter} from '../../adapters/adapterPhantom'
-
-// import { getPhantomWallet } from "@solana/wallet-adapter-wallets";
-
-// Connect wallet in browser
-
-
 
 const Header = () => {
-
-    // const connection = new Connection('devnet');
-
-    // const walletsForSite = useMemo(
-    //     () => [
-    //         new PhantomWalletAdapter()
-    //         // new SlopeWalletAdapter(),
-    //         // new SolflareWalletAdapter(),
-    //         // new TorusWalletAdapter(),
-    //         // new LedgerWalletAdapter(),
-    //         // new SolletWalletAdapter({ network }),
-    //         // new SolletExtensionWalletAdapter({ network }),
-    //     ],
-    //     []
-    // );
 
     const [modalActive, setModalActive] = useState(false)
     const [whatProvider, setWhatProvider] = useState('')
@@ -104,26 +74,6 @@ const Header = () => {
         }
     };
 
-    // async function transferSOL() {
-    //     var provider = await getProvider();
-    //     console.log("Public key of the emitter: ", provider.publicKey.toString());
-    // }
-
-    const getAccount = async () => {
-        // var provider = await getProviderPhantom();
-        // console.log("Public key of the emitter: ", provider.publicKey.toString());
-
-        // setModalActive(false)
-        // try {
-        //     const resp = await window.solana.connect();
-        //     resp.publicKey.toString()
-        //     console.log(resp.publicKey.toString());
-        //     localStorage.setItem('tokenSol', resp.publicKey.toString())
-        //     dispatch(actionAuth(true))
-        // } catch (err) {
-        //     console.log(err);
-        // }
-    }
 
     const disconnectWallet = () => {
         window.solana.disconnect();
