@@ -37,6 +37,7 @@
     &__item {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         width: 300px;
         border: 1px solid #5ac4be;
         padding: 10px;
@@ -45,8 +46,18 @@
         transition: .3s;
         cursor: pointer;
 
+        &_left {
+            max-width: 30px;
+            overflow: hidden;
+            img {
+                max-height: 30px;
+            }
+        }
+
         &:hover {
             background-color: rgba(0, 0, 0, 0.1);
         }
+
+
     }
 }

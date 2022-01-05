@@ -5,12 +5,15 @@ import { useNavigate } from 'react-router'
 import { actionAuth } from '../../redux/reducers/userReducer'
 import Modal from '../Modal/Modal'
 import './Header.scss'
+
+import phantomLogo from '../../asset/phantom-logo.svg'
+import solflare from '../../asset/solflare-logo.svg'
 // import { useConnection } from '@solana/wallet-adapter-react'
 
 
 // import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
 // import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { Connection, SystemProgram, Transaction, clusterApiUrl } from '@solana/web3.js';
+// import { Connection, SystemProgram, Transaction, clusterApiUrl } from '@solana/web3.js';
 // import { Connection } from '@metaplex/js';
 
 // import {PhantomWalletAdapter} from '../../adapters/adapterPhantom'
@@ -48,47 +51,56 @@ const Header = () => {
 
     const wallets = [
         {
-            logo: '1',
+            logo: phantomLogo,
             title: 'Phantom',
             funcActive: () => getProviderPhantom()
         },
         {
-            logo: '3',
+            logo: solflare,
             title: 'Solfare',
             funcActive: () => getProviderSolflare()
         },
     ]
 
-    const getProviderSolflare = () => {
+    const getProviderSolflare = async () => {
+        try {
+            if ('solflare' in window) {
+                await window.solflare.connect()
+                const provider = window.solflare;
+                // console.log('ЗАШЛИИИИ', provider)
+                if (provider.isSolflare) {
 
-        if ('solflare' in window) {
-            window.solflare.connect()
-            const provider = window.solflare;
-            if (provider.isSolFlare) {
-                setWhatProvider('Solflare')
-                console.log("Public key Solflare of the emitter: ", provider.publicKey.toString());
-                return provider;
+                    setWhatProvider('Solflare')
+                    // console.log("Public key Solflare of the emitter: ", provider.publicKey.toString());
+                    return provider;
+                }
+            } else {
+                window.open('https://solflare.com', '_blank');
             }
-        } else {
-            window.open('https://solflare.com', '_blank');
+        } catch (ex) {
+            console.log(ex)
         }
 
     }
 
     const getProviderPhantom = async () => {
-        if ("solana" in window) {
+        try {
+            if ("solana" in window) {
 
-            // opens wallet to connect to
-            await window.solana.connect();
+                // opens wallet to connect to
+                await window.solana.connect();
 
-            const provider = window.solana;
-            if (provider.isPhantom) {
-                console.log("Is Phantom installed?  ", provider.isPhantom);
-                setWhatProvider('Phantom')
-                return provider;
+                const provider = window.solana;
+                if (provider.isPhantom) {
+                    console.log("Is Phantom installed?  ", provider.isPhantom);
+                    setWhatProvider('Phantom')
+                    return provider;
+                }
+            } else {
+                window.open("https://www.phantom.app/", "_blank");
             }
-        } else {
-            window.open("https://www.phantom.app/", "_blank");
+        } catch (ex) {
+            console.log(ex)
         }
     };
 
@@ -115,9 +127,12 @@ const Header = () => {
 
     const disconnectWallet = () => {
         window.solana.disconnect();
+        window.solflare.disconnect()
         localStorage.removeItem('tokenSol')
         dispatch(actionAuth(false))
         history({ pathname: '/' })
+        setWhatProvider('')
+        // console.log(window.solflare);
     }
 
     // useEffect(() => {
@@ -139,9 +154,13 @@ const Header = () => {
         if (whatProvider === 'Phantom') {
             var provider = await getProviderPhantom();
             console.log("Public key Phantom of the emitter: ", provider.publicKey.toString());
+            localStorage.setItem('tokenSol', provider.publicKey.toString())
+            dispatch(actionAuth(true))
         } else if (whatProvider === 'Solflare') {
             var provider = await getProviderSolflare();
             console.log("Public key Solflare of the emitter: ", provider.publicKey.toString());
+            localStorage.setItem('tokenSol', provider.publicKey.toString())
+            dispatch(actionAuth(true))
         }
         setModalActive(false)
     }, [whatProvider])

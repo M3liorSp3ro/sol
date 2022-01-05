@@ -1,6 +1,11 @@
 .page-content__main {
-    width: 75.5vw;
-    margin-right: 3.7vw;
+    width: 100%;
+    // margin-right: 3.7vw;
     // margin-left: auto;
     color: white;
+
+    display: flex;
+    justify-content: center;
+
+    margin-top: 5vh;
   }
