@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router'
 import CardContent from '../../components/CardContent/CardContent'
 import Loader from '../../components/Loader/Loader'
 import './MyNFT.scss'
+import {createpage} from '../../constants/index'
 
 const MyNFT = () => {
 
     const history = useNavigate()
 
     return (
-        <CardContent title={'NFT Management'}>
+        <>
             <div className="nftPage">
                 <div className='nftPage__leftBlock'>
                     <div className="nftPage__leftBlock_title">
@@ -23,7 +24,7 @@ const MyNFT = () => {
                     </div>
                 </div>
                 <div onClick={() => {
-                    history({ pathname: '/create' })
+                    history({ pathname: `${createpage}/0` })
                 }} className="gitBook">
                     Create page
                 </div>
@@ -32,7 +33,7 @@ const MyNFT = () => {
             <div className="loader">
                 <Loader />
             </div>
-        </CardContent>
+        </>
     )
 }
 

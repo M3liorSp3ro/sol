@@ -1,0 +1,8 @@
+.createPage {
+    display: flex;
+    position: relative;
+    margin-top: 2vh;
+    &__stepper {
+        margin-right: 2vw;
+    }
+}

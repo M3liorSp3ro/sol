@@ -26,6 +26,10 @@ body {
   display: flex;
   justify-content: center;
 
+  flex: 1 1 auto;
+
+
+
 
   cursor: pointer;
 
@@ -76,4 +80,63 @@ body {
   justify-content: center;
 
   margin-top: 2vw;
+}
+
+.back {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  margin-bottom: 1vw;
+
+  span {
+    transition: .2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      color: #5ac4be;
+    }
+  }
+
+}
+
+.blockDesc {
+  margin-bottom: 1vw;
+
+  &__upload {
+    margin-top: 10px;
+    font-size: 0.8vw;
+  }
+
+  & .littleText {
+    font-size: 0.7vw;
+    max-width: 50%;
+    margin-top: 10px;
+  }
+}
+
+.blockBtns {
+  display: flex;
+  align-items: center;
+
+  width: 30vw;
+
+  & .gitBook {
+    &:first-child {
+      margin-right: 15px;
+    }
+  }
+}
+
+.dropArea {
+  margin-top: 20px;
+  width: 30vw;
+  height: 30vh;
+  border: 2px dashed white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-height: 100%;
+  }
 }

@@ -1,4 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router';
+import CardContent from '../../components/CardContent/CardContent';
+import SingleNft from '../../components/SingleNft/SingleNft';
+import Stepper from '../../components/Stepper/Stepper';
+import { createpage, homepage } from '../../constants';
+
+import './CreatePage.scss'
 
 const web3 = require("@solana/web3.js");
 const splToken = require('@solana/spl-token');
@@ -7,14 +14,11 @@ const splToken = require('@solana/spl-token');
 
 const CreatePage = () => {
 
+    const history = useNavigate()
+    const { pathname } = useLocation()
 
-    // useEffect(async () => {
-    //     // Connect to cluster
-    //     let connection = new web3.Connection(
-    //       web3.clusterApiUrl("devnet"),
-    //       'confirmed',
-    //     );
-    //   }, [])
+    const [contentTag, setContentTag] = useState('')
+    const [step, setStep] = useState('')
 
     const createNFT = async () => {
         // Connect to cluster
@@ -92,13 +96,58 @@ const CreatePage = () => {
         console.log('SIGNATURE', signature);
     }
 
+    const createNFTPage = (contentTag) => {
+        if (contentTag === 'SINGLE') {
+            return <SingleNft step={step} setStep={setStep} />
+        } else if (contentTag === 'MULTIPLE') {
+            return <div>MULTIPLE</div>
+        }
+    }
+
+    useEffect(async () => {
+        setStep(pathname.split('/')[2])
+        console.log(pathname.split('/')[2])
+    }, [pathname])
+
     return (
-        <div>
-            <div onClick={() => {
-                createNFT()
-            }} className="gitBook">
-                Create NFT
+        <div className='createPage'>
+            <div onClick={() => history({ pathname: homepage })} className="back">
+                <span>BACK</span>
             </div>
+            <div className="createPage__stepper">
+                <Stepper step={step} />
+            </div>
+
+            <div className="createPage__infoblock">
+                {
+                    step === '0' && contentTag === ''
+                        ? <>
+                            <div className="blockDesc">
+                                Easily create an NFT with Metaplex standard that can be traded on any NFT marketplace.
+                        <div>How do you want to create your NFT?</div>
+                            </div>
+
+                            <div className="blockBtns">
+                                <div onClick={() => {
+                                    setContentTag('SINGLE')
+                                    history({ pathname: `${createpage}/1` })
+                                }} className="gitBook">
+                                    SINGLE
+                    </div>
+                                <div onClick={() => {
+                                    setContentTag('MULTIPLE')
+                                    history({ pathname: `${createpage}/1` })
+                                    console.log('MULTIPLE')
+                                }} className="gitBook">
+                                    MULTIPLE
+                    </div>
+                            </div>
+                        </>
+                        : createNFTPage(contentTag)
+                }
+
+            </div>
+
         </div>
     )
 }
