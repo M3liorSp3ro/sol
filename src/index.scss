@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 body {
   background-color: #131A35;
-  font-family: Montserrat;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .page-content {
@@ -16,7 +18,7 @@ body {
   display: flex;
   text-decoration: none;
   align-items: center;
-  margin-right: 3vw;
+  // margin-right: 3vw;
   border: 1px solid #5ac4be;
   padding: 10px;
   border-radius: 10px;
@@ -42,4 +44,36 @@ body {
       }
     }
   }
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 90%;
+
+  padding: 1px;
+  background: linear-gradient(245.22deg, #da2eef 7.97%, #2b6aff 49.17%, #39d0d8 92.1%);
+  border-radius: 4px;
+
+  &__body {
+    width: 100%;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-row-gap: 12px;
+    row-gap: 12px;
+    padding: 32px 24px;
+    background-color: #131a35;
+    opacity: .9;
+    border-radius: 4px;
+  }
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 2vw;
 }
