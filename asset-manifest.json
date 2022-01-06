@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/sol/static/css/main.809c1ede.css",
-    "main.js": "/sol/static/js/main.bfc762e5.js",
+    "main.css": "/sol/static/css/main.7e775e40.css",
+    "main.js": "/sol/static/js/main.691681c7.js",
     "static/media/phantom-logo.svg": "/sol/static/media/phantom-logo.ee7a02daadc024a61497d1405559acae.svg",
     "static/media/solflare-logo.svg": "/sol/static/media/solflare-logo.26659b6d04bcb4ebddbfe40565ddefe2.svg",
     "index.html": "/sol/index.html",
-    "main.809c1ede.css.map": "/sol/static/css/main.809c1ede.css.map",
-    "main.bfc762e5.js.map": "/sol/static/js/main.bfc762e5.js.map"
+    "main.7e775e40.css.map": "/sol/static/css/main.7e775e40.css.map",
+    "main.691681c7.js.map": "/sol/static/js/main.691681c7.js.map"
   },
   "entrypoints": [
-    "static/css/main.809c1ede.css",
-    "static/js/main.bfc762e5.js"
+    "static/css/main.7e775e40.css",
+    "static/js/main.691681c7.js"
   ]
 }
