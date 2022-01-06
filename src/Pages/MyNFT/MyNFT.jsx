@@ -31,7 +31,7 @@ const MyNFT = () => {
 
             </div>
             <div className="loader">
-                <Loader />
+                <Loader little />
             </div>
         </>
     )

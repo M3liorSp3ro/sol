@@ -104,14 +104,36 @@ const CreatePage = () => {
         }
     }
 
-    useEffect(async () => {
+    const backPage = (step) => {
+        if (pathname.split('/')[2] === '0') {
+            history({ pathname: homepage })
+        } else if (pathname.split('/')[2] === '1') {
+            setContentTag('')
+            setStep('0')
+            history({ pathname: `${createpage}/0` })
+        } else if (pathname.split('/')[2] === '2') {
+            setStep('1')
+            history({ pathname: `${createpage}/1` })
+        } else if (pathname.split('/')[2] === '3') {
+            setStep('2')
+            history({ pathname: `${createpage}/2` })
+        } else if (pathname.split('/')[2] === '4') {
+            setStep('3')
+            history({ pathname: `${createpage}/3` })
+        } else if (pathname.split('/')[2] === '5') {
+            setStep('4')
+            history({ pathname: `${createpage}/4` })
+        }
+    }
+
+    useEffect(() => {
         setStep(pathname.split('/')[2])
         console.log(pathname.split('/')[2])
     }, [pathname])
 
     return (
         <div className='createPage'>
-            <div onClick={() => history({ pathname: homepage })} className="back">
+            <div onClick={() => backPage(step)} className="back">
                 <span>BACK</span>
             </div>
             <div className="createPage__stepper">

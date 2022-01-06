@@ -8,6 +8,7 @@ import './Header.scss'
 
 import phantomLogo from '../../asset/phantom-logo.svg'
 import solflare from '../../asset/solflare-logo.svg'
+import { toast } from 'react-toastify'
 
 const Header = () => {
 
@@ -49,6 +50,7 @@ const Header = () => {
             }
         } catch (ex) {
             console.log(ex)
+            toast.error('Ошибка подключения к кошельку')
         }
 
     }
@@ -71,6 +73,7 @@ const Header = () => {
             }
         } catch (ex) {
             console.log(ex)
+            toast.error('Ошибка подключения к кошельку')
         }
     };
 
@@ -82,6 +85,7 @@ const Header = () => {
         dispatch(actionAuth(false))
         history({ pathname: '/' })
         setWhatProvider('')
+        toast('Вы отключились от кошелька')
         // console.log(window.solflare);
     }
 
@@ -106,11 +110,13 @@ const Header = () => {
             console.log("Public key Phantom of the emitter: ", provider.publicKey.toString());
             localStorage.setItem('tokenSol', provider.publicKey.toString())
             dispatch(actionAuth(true))
+            toast('Вы подключились к Phantom Wallet')
         } else if (whatProvider === 'Solflare') {
             var provider = await getProviderSolflare();
             console.log("Public key Solflare of the emitter: ", provider.publicKey.toString());
             localStorage.setItem('tokenSol', provider.publicKey.toString())
             dispatch(actionAuth(true))
+            toast('Вы подключились к Solflare')
         }
         setModalActive(false)
     }, [whatProvider])

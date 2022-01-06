@@ -1,0 +1,71 @@
+.uploadStep {
+    & .dropArea {
+        margin-bottom: 30px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: 15px;
+    }
+}
+
+.infoStep {
+    &__firstBLock {
+        margin-bottom: 30px;
+
+        &_title {
+            font-weight: 600;
+        }
+
+        &_desc {
+            font-size: 12px;
+        }
+    }
+
+    &__secondBLock {
+        margin-bottom: 30px;
+
+        &_title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        &_desc {
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+
+        &_input {
+            display: flex;
+            align-items: center;
+
+            & .customInput {
+                padding-top: 0;
+                margin-bottom: 0;
+            }
+            &_address {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.royalties {
+    &__title {
+        margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    &__infoBlock {
+        margin-bottom: 20px;
+
+        &_cost {
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+}
