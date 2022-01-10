@@ -45,9 +45,25 @@
                 padding-top: 0;
                 margin-bottom: 0;
             }
+
             &_address {
+                min-width: 95px;
                 margin-right: 10px;
             }
+        }
+
+        &_addAddress {
+            margin-top: 15px;
+
+            span {
+                cursor: pointer;
+                transition: .2s ease-in-out;
+
+                &:hover {
+                    color: #5ac4be;
+                }
+            }
+
         }
     }
 }
@@ -68,4 +84,7 @@
             }
         }
     }
+}
+
+.modalCreateTitle {
 }

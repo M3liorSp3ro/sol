@@ -37,6 +37,7 @@ const Header = () => {
         try {
             if ('solflare' in window) {
                 await window.solflare.connect()
+                localStorage.setItem('walletSol', 'solflare')
                 const provider = window.solflare;
                 // console.log('ЗАШЛИИИИ', provider)
                 if (provider.isSolflare) {
@@ -61,6 +62,7 @@ const Header = () => {
 
                 // opens wallet to connect to
                 await window.solana.connect();
+                localStorage.setItem('walletSol', 'phantom')
 
                 const provider = window.solana;
                 if (provider.isPhantom) {
@@ -79,13 +81,18 @@ const Header = () => {
 
 
     const disconnectWallet = () => {
-        window.solana.disconnect();
-        window.solflare.disconnect()
+        if(localStorage.getItem('walletSol') === 'phantom') {
+            toast('Disconnect Phantom')
+            window.solana.disconnect();
+        } else if(localStorage.getItem('walletSol') === 'solflare') {
+            toast('Disconnect Solflare')
+            window.solflare.disconnect();
+        }
         localStorage.removeItem('tokenSol')
         dispatch(actionAuth(false))
         history({ pathname: '/' })
         setWhatProvider('')
-        toast('Вы отключились от кошелька')
+        // toast('Вы отключились от кошелька')
         // console.log(window.solflare);
     }
 

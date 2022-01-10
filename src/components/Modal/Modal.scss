@@ -65,3 +65,18 @@
 
     }
 }
+
+.greenModal {
+    background-color: #131A35;
+    border: 2px solid #1c274f;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & .gitBook {
+        margin-top: 10px;
+        min-width: 70px;
+    }
+}
