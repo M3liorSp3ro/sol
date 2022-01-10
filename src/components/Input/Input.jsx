@@ -3,7 +3,7 @@ import './Input.scss'
 
 const Input = ({ title, value, onChange, placeholder, onlyNum, moreArea, id, dopFunc }) => {
 
-    const [noChangeInput, setNoChangeInput] = useState(null)
+    const [noChangeInput, setNoChangeInput] = useState('')
 
     const addresesFunc = (id, percent) => {
         // console.log('id', id);

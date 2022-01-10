@@ -30,8 +30,6 @@ const SingleNft = ({ step, setStep }) => {
     const [loading, setLoading] = useState(false)
     const [loadingUpload, setLoadingUpload] = useState(true)
 
-    const [totalPercent, setTotalPercent] = useState(100)
-
     const uploadStep = useRef()
 
     const [addresses, setAddresses] = useState([
@@ -95,6 +93,12 @@ const SingleNft = ({ step, setStep }) => {
             }
 
 
+            if(step === '3' && infoPercent.length > 0) {
+                setStep(4)
+                history({ pathname: `${createpage}/4` })
+            } else if (step === '3' && infoPercent.length === 0) {
+                toast.error('Заполните все поля')
+            }
 
         }
     }
@@ -102,20 +106,22 @@ const SingleNft = ({ step, setStep }) => {
     const changePercentAddress = (id, percentText) => {
         // console.log('id', id);
         // console.log('percent', percent);
-        let percent
-        percent += percentText
+        let allSum = 0
 
-        let totalSum = 100
-
-        addresses.forEach(item => {
-            totalSum -= +item.percent
+        addresses.forEach(el => {
+            if(el.id !== id){
+            allSum += +el.percent
+        }
         })
 
-        console.log('totalSum', totalSum);
+        if((+allSum) + (+percentText) > 100){
+            percentText = 100 - allSum
+        }
+
 
         const newArr = addresses.map(el => {
             if (el.id === id) {
-                el = { ...el, percent: +percentText > 100 ? 100 : percentText }
+                el = { ...el, percent: percentText}
             }
             return el
         })
@@ -249,11 +255,11 @@ const SingleNft = ({ step, setStep }) => {
                                         {`${el.address.slice(0, 4)}...${el.address.slice(Math.max(el.address.length - 4, 0))}`}
                                     </div>
 
-                                    <Input value={el.percent} id={el.id} moreArea={true} dopFunc={changePercentAddress} />
+                                    <Input placeholder='0' value={el.percent} id={el.id} moreArea={true} dopFunc={changePercentAddress} />
                                 </div>
                             )
                         })}
-                        <div onClick={() => setModalActive(true)} className="infoStep__secondBLock_addAddress"><span>+ ADD ADDRESS</span></div>
+                        <div className="infoStep__secondBLock_addAddress"><span onClick={() => setModalActive(true)}>+ ADD ADDRESS</span></div>
                     </div>
                 </div>
             )
